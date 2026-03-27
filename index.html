@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youooo Python Academy</title>
+  <meta
+    name="description"
+    content="Youooo Python Academy - Learn Python from beginner to expert with lessons, quizzes, and a live playground."
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo">Y</div>
+        <div>
+          <h1>Youooo Python Academy</h1>
+          <p>Learn Python from beginner to expert — free on GitHub Pages</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button id="themeToggle" class="ghost-btn">Toggle Theme</button>
+        <button id="resetProgressBtn" class="danger-btn">Reset Progress</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <span class="pill">Beginner → Expert</span>
+        <h2>Master Python step by step</h2>
+        <p>
+          Study lessons, answer quizzes, and practice code in the built-in Python
+          playground.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-label">Lessons</span>
+            <strong id="statLessons">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Completed</span>
+            <strong id="statCompleted">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Progress</span>
+            <strong id="statProgress">0%</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Playground</span>
+            <strong id="runtimeStatus">Loading...</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="main-grid">
+      <aside class="sidebar panel">
+        <div class="sidebar-top">
+          <h3>Curriculum</h3>
+          <input
+            id="lessonSearch"
+            type="text"
+            placeholder="Search lessons..."
+            class="search-input"
+          />
+          <div class="level-filters">
+            <button class="filter-btn active" data-level="All">All</button>
+            <button class="filter-btn" data-level="Beginner">Beginner</button>
+            <button class="filter-btn" data-level="Intermediate">Intermediate</button>
+            <button class="filter-btn" data-level="Advanced">Advanced</button>
+            <button class="filter-btn" data-level="Expert">Expert</button>
+          </div>
+        </div>
+
+        <div id="lessonList" class="lesson-list"></div>
+      </aside>
+
+      <section class="content-column">
+        <article class="lesson-panel panel">
+          <div class="lesson-header">
+            <div>
+              <span id="lessonLevelBadge" class="pill">Beginner</span>
+              <h2 id="lessonTitle">Select a lesson</h2>
+              <p id="lessonSummary" class="muted">
+                Pick a lesson from the left to start learning.
+              </p>
+            </div>
+
+            <div class="lesson-actions">
+              <button id="markCompleteBtn" class="primary-btn">Mark Complete</button>
+              <button id="loadExampleBtn" class="ghost-btn">Load Example</button>
+            </div>
+          </div>
+
+          <div id="lessonObjectives" class="lesson-objectives"></div>
+
+          <div class="lesson-section">
+            <h3>Explanation</h3>
+            <div id="lessonContent" class="lesson-content">
+              <p>Welcome to Youooo Python Academy.</p>
+            </div>
+          </div>
+
+          <div class="lesson-section">
+            <h3>Example Code</h3>
+            <pre id="lessonCodeBlock" class="code-block"><code># Lesson example will appear here</code></pre>
+          </div>
+
+          <div class="lesson-section">
+            <h3>Quick Quiz</h3>
+            <div id="quizContainer" class="quiz-container"></div>
+          </div>
+        </article>
+
+        <section class="playground-panel panel">
+          <div class="playground-header">
+            <div>
+              <h2>Python Playground</h2>
+              <p class="muted">Write Python and run it in your browser.</p>
+            </div>
+            <div class="playground-actions">
+              <button id="runCodeBtn" class="primary-btn">Run Code</button>
+              <button id="clearCodeBtn" class="ghost-btn">Clear</button>
+              <button id="resetCodeBtn" class="ghost-btn">Reset to Lesson</button>
+            </div>
+          </div>
+
+          <div class="playground-grid">
+            <div>
+              <label class="editor-label" for="codeEditor">Editor</label>
+              <textarea id="codeEditor" spellcheck="false"></textarea>
+            </div>
+            <div>
+              <label class="editor-label" for="outputBox">Output</label>
+              <pre id="outputBox" class="output-box">Python output will appear here...</pre>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built for free with GitHub Pages • Youooo Python Academy</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
