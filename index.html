@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Youooo Python Academy V2</title>
+  <title>Youooo Python Academy V3</title>
   <meta
     name="description"
-    content="Youooo Python Academy V2 - Learn Python from beginner to expert with lessons, roadmap, coding challenges, certificates, and a live Python playground."
+    content="Youooo Python Academy V3 - Learn Python from beginner to expert with roadmap, challenges, projects, final exam, certificate, and live Python playground."
   />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -17,7 +17,7 @@
         <div class="brand-logo">Y</div>
         <div>
           <h1>Youooo Python Academy</h1>
-          <p>Python from beginner to expert — roadmap, challenges, certificates</p>
+          <p>Beginner to expert • lessons • projects • final exam • certificate</p>
         </div>
       </div>
 
@@ -29,11 +29,11 @@
 
     <section class="hero">
       <div class="hero-card">
-        <span class="pill">V2 Academy</span>
-        <h2>Learn Python with structure, practice, and proof</h2>
+        <span class="pill">V3 Product Mode</span>
+        <h2>Learn Python with structure, practice, projects, and proof</h2>
         <p>
-          Study lessons, follow the roadmap, solve coding challenges, and generate
-          your completion certificate.
+          Study lessons, follow the roadmap, solve challenges, build projects,
+          pass the final exam, and generate a clean completion certificate.
         </p>
 
         <div class="hero-stats">
@@ -46,8 +46,12 @@
             <strong id="statCompleted">0</strong>
           </div>
           <div class="stat-card">
-            <span class="stat-label">Challenges Solved</span>
+            <span class="stat-label">Challenges</span>
             <strong id="statChallenges">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Exam Score</span>
+            <strong id="statExamScore">0%</strong>
           </div>
           <div class="stat-card">
             <span class="stat-label">Progress</span>
@@ -66,6 +70,8 @@
         <button class="tab-btn active" data-tab="academyTab">Academy</button>
         <button class="tab-btn" data-tab="roadmapTab">Roadmap</button>
         <button class="tab-btn" data-tab="challengesTab">Challenges</button>
+        <button class="tab-btn" data-tab="projectsTab">Projects</button>
+        <button class="tab-btn" data-tab="examTab">Final Exam</button>
         <button class="tab-btn" data-tab="certificateTab">Certificate</button>
       </div>
     </nav>
@@ -165,7 +171,7 @@
             <div>
               <span class="pill">Python Roadmap</span>
               <h2>From beginner to expert</h2>
-              <p class="muted">Follow this plan to grow in the right order.</p>
+              <p class="muted">Follow this path in the right order.</p>
             </div>
           </div>
 
@@ -179,7 +185,7 @@
             <div>
               <span class="pill">Coding Challenges</span>
               <h2>Practice what you learn</h2>
-              <p class="muted">Solve small problems to build real Python confidence.</p>
+              <p class="muted">Small coding tasks to build real Python confidence.</p>
             </div>
           </div>
 
@@ -192,9 +198,7 @@
               <div class="challenge-card">
                 <span id="challengeLevelBadge" class="pill">Beginner</span>
                 <h3 id="challengeTitle">Choose a challenge</h3>
-                <p id="challengePrompt" class="muted">
-                  Select a challenge from the left.
-                </p>
+                <p id="challengePrompt" class="muted">Select a challenge from the left.</p>
 
                 <div class="challenge-section">
                   <h4>Task</h4>
@@ -228,13 +232,56 @@
         </div>
       </section>
 
+      <section id="projectsTab" class="tab-content">
+        <div class="panel">
+          <div class="section-header">
+            <div>
+              <span class="pill">Projects</span>
+              <h2>Build real Python projects</h2>
+              <p class="muted">Move from lessons to portfolio-ready work.</p>
+            </div>
+          </div>
+
+          <div id="projectGrid" class="project-grid"></div>
+        </div>
+      </section>
+
+      <section id="examTab" class="tab-content">
+        <div class="panel">
+          <div class="section-header">
+            <div>
+              <span class="pill">Final Exam</span>
+              <h2>Test your Python knowledge</h2>
+              <p class="muted">Answer all questions and get your score.</p>
+            </div>
+            <div class="exam-side-stats">
+              <div class="mini-metric">
+                <span>Best Score</span>
+                <strong id="bestExamScore">0%</strong>
+              </div>
+            </div>
+          </div>
+
+          <div id="examContainer" class="exam-container"></div>
+
+          <div class="exam-actions">
+            <button id="submitExamBtn" class="primary-btn">Submit Final Exam</button>
+            <button id="resetExamBtn" class="ghost-btn">Reset Answers</button>
+          </div>
+
+          <div id="examResultBox" class="exam-result-box muted">
+            Your exam result will appear here.
+          </div>
+        </div>
+      </section>
+
       <section id="certificateTab" class="tab-content">
         <div class="panel">
           <div class="section-header">
             <div>
               <span class="pill">Certificate</span>
               <h2>Generate your certificate</h2>
-              <p class="muted">Complete your learning path and create a shareable certificate view.</p>
+              <p class="muted">Create a clean certificate after you finish your learning path.</p>
             </div>
           </div>
 
@@ -269,33 +316,53 @@
                   <span>Challenges Solved</span>
                   <strong id="certificateChallengesDone">0</strong>
                 </div>
+                <div class="mini-metric">
+                  <span>Best Exam</span>
+                  <strong id="certificateExamDone">0%</strong>
+                </div>
+                <div class="mini-metric">
+                  <span>Status</span>
+                  <strong id="certificateStatusText">In Progress</strong>
+                </div>
               </div>
             </div>
 
             <div id="certificatePreview" class="certificate-preview">
               <div class="certificate-inner">
-                <div class="cert-topline">YOUOOO PYTHON ACADEMY</div>
-                <h2>Certificate of Completion</h2>
-                <p class="cert-text">This certificate is proudly presented to</p>
-                <h3 id="certificateNamePreview">Your Name Here</h3>
-                <p class="cert-text">
-                  for successfully completing the
-                  <strong id="certificateTrackPreview">Full Python Academy Track</strong>
-                </p>
-                <p class="cert-text">
-                  Lessons completed:
-                  <strong id="certificateLessonsPreview">0</strong>
-                  • Challenges solved:
-                  <strong id="certificateChallengesPreview">0</strong>
-                </p>
-                <div class="cert-footer">
-                  <div>
-                    <span>Date</span>
-                    <strong id="certificateDatePreview">--</strong>
+                <div class="cert-border">
+                  <div class="cert-topline">YOUOOO ACADEMY</div>
+                  <div class="cert-badge-row">
+                    <span class="cert-badge">Python</span>
+                    <span class="cert-badge">Completion</span>
+                    <span class="cert-badge">V3</span>
                   </div>
-                  <div>
-                    <span>Issued by</span>
-                    <strong>Youooo Python Academy</strong>
+                  <h2>Certificate of Achievement</h2>
+                  <p class="cert-text">This is proudly awarded to</p>
+                  <h3 id="certificateNamePreview">Your Name Here</h3>
+                  <p class="cert-text">
+                    for successfully completing the
+                    <strong id="certificateTrackPreview">Full Python Academy Track</strong>
+                  </p>
+                  <p class="cert-text">
+                    Lessons completed:
+                    <strong id="certificateLessonsPreview">0</strong>
+                    • Challenges solved:
+                    <strong id="certificateChallengesPreview">0</strong>
+                    • Best exam:
+                    <strong id="certificateExamPreview">0%</strong>
+                  </p>
+
+                  <div class="cert-signature-row">
+                    <div class="cert-signature">
+                      <div class="signature-line"></div>
+                      <span>Date</span>
+                      <strong id="certificateDatePreview">--</strong>
+                    </div>
+                    <div class="cert-signature">
+                      <div class="signature-line"></div>
+                      <span>Issued by</span>
+                      <strong>Youooo Python Academy</strong>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -306,7 +373,7 @@
     </main>
 
     <footer class="footer">
-      <p>Built free with GitHub Pages By Ahmed Aldulaimi • Youooo Python Academy V2</p>
+      <p>Built free with GitHub Pages by Ahmed Aldulaimi • Youooo Python Academy V3</p>
     </footer>
   </div>
 
