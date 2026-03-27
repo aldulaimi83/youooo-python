@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Youooo Python Academy</title>
+  <title>Youooo Python Academy V2</title>
   <meta
     name="description"
-    content="Youooo Python Academy - Learn Python from beginner to expert with lessons, quizzes, and a live playground."
+    content="Youooo Python Academy V2 - Learn Python from beginner to expert with lessons, roadmap, coding challenges, certificates, and a live Python playground."
   />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -17,7 +17,7 @@
         <div class="brand-logo">Y</div>
         <div>
           <h1>Youooo Python Academy</h1>
-          <p>Learn Python from beginner to expert — free on GitHub Pages</p>
+          <p>Python from beginner to expert — roadmap, challenges, certificates</p>
         </div>
       </div>
 
@@ -29,11 +29,11 @@
 
     <section class="hero">
       <div class="hero-card">
-        <span class="pill">Beginner → Expert</span>
-        <h2>Master Python step by step</h2>
+        <span class="pill">V2 Academy</span>
+        <h2>Learn Python with structure, practice, and proof</h2>
         <p>
-          Study lessons, answer quizzes, and practice code in the built-in Python
-          playground.
+          Study lessons, follow the roadmap, solve coding challenges, and generate
+          your completion certificate.
         </p>
 
         <div class="hero-stats">
@@ -46,105 +46,267 @@
             <strong id="statCompleted">0</strong>
           </div>
           <div class="stat-card">
+            <span class="stat-label">Challenges Solved</span>
+            <strong id="statChallenges">0</strong>
+          </div>
+          <div class="stat-card">
             <span class="stat-label">Progress</span>
             <strong id="statProgress">0%</strong>
           </div>
           <div class="stat-card">
-            <span class="stat-label">Playground</span>
+            <span class="stat-label">Runtime</span>
             <strong id="runtimeStatus">Loading...</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <main class="main-grid">
-      <aside class="sidebar panel">
-        <div class="sidebar-top">
-          <h3>Curriculum</h3>
-          <input
-            id="lessonSearch"
-            type="text"
-            placeholder="Search lessons..."
-            class="search-input"
-          />
-          <div class="level-filters">
-            <button class="filter-btn active" data-level="All">All</button>
-            <button class="filter-btn" data-level="Beginner">Beginner</button>
-            <button class="filter-btn" data-level="Intermediate">Intermediate</button>
-            <button class="filter-btn" data-level="Advanced">Advanced</button>
-            <button class="filter-btn" data-level="Expert">Expert</button>
+    <nav class="tabs-panel panel">
+      <div class="tabs-row">
+        <button class="tab-btn active" data-tab="academyTab">Academy</button>
+        <button class="tab-btn" data-tab="roadmapTab">Roadmap</button>
+        <button class="tab-btn" data-tab="challengesTab">Challenges</button>
+        <button class="tab-btn" data-tab="certificateTab">Certificate</button>
+      </div>
+    </nav>
+
+    <main>
+      <section id="academyTab" class="tab-content active">
+        <div class="main-grid">
+          <aside class="sidebar panel">
+            <div class="sidebar-top">
+              <h3>Curriculum</h3>
+              <input
+                id="lessonSearch"
+                type="text"
+                placeholder="Search lessons..."
+                class="search-input"
+              />
+              <div class="level-filters">
+                <button class="filter-btn active" data-level="All">All</button>
+                <button class="filter-btn" data-level="Beginner">Beginner</button>
+                <button class="filter-btn" data-level="Intermediate">Intermediate</button>
+                <button class="filter-btn" data-level="Advanced">Advanced</button>
+                <button class="filter-btn" data-level="Expert">Expert</button>
+              </div>
+            </div>
+
+            <div id="lessonList" class="lesson-list"></div>
+          </aside>
+
+          <section class="content-column">
+            <article class="lesson-panel panel">
+              <div class="lesson-header">
+                <div>
+                  <span id="lessonLevelBadge" class="pill">Beginner</span>
+                  <h2 id="lessonTitle">Select a lesson</h2>
+                  <p id="lessonSummary" class="muted">
+                    Pick a lesson from the left to start learning.
+                  </p>
+                </div>
+
+                <div class="lesson-actions">
+                  <button id="markCompleteBtn" class="primary-btn">Mark Complete</button>
+                  <button id="loadExampleBtn" class="ghost-btn">Load Example</button>
+                </div>
+              </div>
+
+              <div id="lessonObjectives" class="lesson-objectives"></div>
+
+              <div class="lesson-section">
+                <h3>Explanation</h3>
+                <div id="lessonContent" class="lesson-content">
+                  <p>Welcome to Youooo Python Academy.</p>
+                </div>
+              </div>
+
+              <div class="lesson-section">
+                <h3>Example Code</h3>
+                <pre id="lessonCodeBlock" class="code-block"><code># Lesson example will appear here</code></pre>
+              </div>
+
+              <div class="lesson-section">
+                <h3>Quick Quiz</h3>
+                <div id="quizContainer" class="quiz-container"></div>
+              </div>
+            </article>
+
+            <section class="playground-panel panel">
+              <div class="playground-header">
+                <div>
+                  <h2>Python Playground</h2>
+                  <p class="muted">Write Python and run it in your browser.</p>
+                </div>
+                <div class="playground-actions">
+                  <button id="runCodeBtn" class="primary-btn">Run Code</button>
+                  <button id="clearCodeBtn" class="ghost-btn">Clear</button>
+                  <button id="resetCodeBtn" class="ghost-btn">Reset to Lesson</button>
+                </div>
+              </div>
+
+              <div class="playground-grid">
+                <div>
+                  <label class="editor-label" for="codeEditor">Editor</label>
+                  <textarea id="codeEditor" spellcheck="false"></textarea>
+                </div>
+                <div>
+                  <label class="editor-label" for="outputBox">Output</label>
+                  <pre id="outputBox" class="output-box">Python output will appear here...</pre>
+                </div>
+              </div>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      <section id="roadmapTab" class="tab-content">
+        <div class="panel">
+          <div class="section-header">
+            <div>
+              <span class="pill">Python Roadmap</span>
+              <h2>From beginner to expert</h2>
+              <p class="muted">Follow this plan to grow in the right order.</p>
+            </div>
+          </div>
+
+          <div class="roadmap-grid" id="roadmapGrid"></div>
+        </div>
+      </section>
+
+      <section id="challengesTab" class="tab-content">
+        <div class="panel">
+          <div class="section-header">
+            <div>
+              <span class="pill">Coding Challenges</span>
+              <h2>Practice what you learn</h2>
+              <p class="muted">Solve small problems to build real Python confidence.</p>
+            </div>
+          </div>
+
+          <div class="challenge-layout">
+            <div class="challenge-sidebar">
+              <div id="challengeList" class="challenge-list"></div>
+            </div>
+
+            <div class="challenge-main">
+              <div class="challenge-card">
+                <span id="challengeLevelBadge" class="pill">Beginner</span>
+                <h3 id="challengeTitle">Choose a challenge</h3>
+                <p id="challengePrompt" class="muted">
+                  Select a challenge from the left.
+                </p>
+
+                <div class="challenge-section">
+                  <h4>Task</h4>
+                  <div id="challengeDescription" class="lesson-content"></div>
+                </div>
+
+                <div class="challenge-section">
+                  <h4>Expected idea</h4>
+                  <div id="challengeHint" class="mini-box"></div>
+                </div>
+
+                <div class="challenge-actions">
+                  <button id="loadChallengeStarterBtn" class="ghost-btn">Load Starter</button>
+                  <button id="solveChallengeBtn" class="primary-btn">Run Challenge Code</button>
+                  <button id="markChallengeSolvedBtn" class="ghost-btn">Mark Solved</button>
+                </div>
+
+                <div class="challenge-editor-grid">
+                  <div>
+                    <label class="editor-label" for="challengeEditor">Challenge Editor</label>
+                    <textarea id="challengeEditor" spellcheck="false"></textarea>
+                  </div>
+                  <div>
+                    <label class="editor-label" for="challengeOutput">Challenge Output</label>
+                    <pre id="challengeOutput" class="output-box">Challenge output will appear here...</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div id="lessonList" class="lesson-list"></div>
-      </aside>
-
-      <section class="content-column">
-        <article class="lesson-panel panel">
-          <div class="lesson-header">
+      <section id="certificateTab" class="tab-content">
+        <div class="panel">
+          <div class="section-header">
             <div>
-              <span id="lessonLevelBadge" class="pill">Beginner</span>
-              <h2 id="lessonTitle">Select a lesson</h2>
-              <p id="lessonSummary" class="muted">
-                Pick a lesson from the left to start learning.
-              </p>
-            </div>
-
-            <div class="lesson-actions">
-              <button id="markCompleteBtn" class="primary-btn">Mark Complete</button>
-              <button id="loadExampleBtn" class="ghost-btn">Load Example</button>
+              <span class="pill">Certificate</span>
+              <h2>Generate your certificate</h2>
+              <p class="muted">Complete your learning path and create a shareable certificate view.</p>
             </div>
           </div>
 
-          <div id="lessonObjectives" class="lesson-objectives"></div>
+          <div class="certificate-layout">
+            <div class="certificate-form-card">
+              <label class="field-label" for="studentNameInput">Your Name</label>
+              <input
+                id="studentNameInput"
+                class="search-input"
+                type="text"
+                placeholder="Enter your full name"
+              />
 
-          <div class="lesson-section">
-            <h3>Explanation</h3>
-            <div id="lessonContent" class="lesson-content">
-              <p>Welcome to Youooo Python Academy.</p>
+              <label class="field-label" for="certificateTrackSelect">Track</label>
+              <select id="certificateTrackSelect" class="search-input">
+                <option value="Python Beginner Track">Python Beginner Track</option>
+                <option value="Python Intermediate Track">Python Intermediate Track</option>
+                <option value="Full Python Academy Track">Full Python Academy Track</option>
+              </select>
+
+              <div class="certificate-actions">
+                <button id="generateCertificateBtn" class="primary-btn">Generate Certificate</button>
+                <button id="printCertificateBtn" class="ghost-btn">Print / Save PDF</button>
+              </div>
+
+              <div class="certificate-metrics">
+                <div class="mini-metric">
+                  <span>Lessons Done</span>
+                  <strong id="certificateLessonsDone">0</strong>
+                </div>
+                <div class="mini-metric">
+                  <span>Challenges Solved</span>
+                  <strong id="certificateChallengesDone">0</strong>
+                </div>
+              </div>
+            </div>
+
+            <div id="certificatePreview" class="certificate-preview">
+              <div class="certificate-inner">
+                <div class="cert-topline">YOUOOO PYTHON ACADEMY</div>
+                <h2>Certificate of Completion</h2>
+                <p class="cert-text">This certificate is proudly presented to</p>
+                <h3 id="certificateNamePreview">Your Name Here</h3>
+                <p class="cert-text">
+                  for successfully completing the
+                  <strong id="certificateTrackPreview">Full Python Academy Track</strong>
+                </p>
+                <p class="cert-text">
+                  Lessons completed:
+                  <strong id="certificateLessonsPreview">0</strong>
+                  • Challenges solved:
+                  <strong id="certificateChallengesPreview">0</strong>
+                </p>
+                <div class="cert-footer">
+                  <div>
+                    <span>Date</span>
+                    <strong id="certificateDatePreview">--</strong>
+                  </div>
+                  <div>
+                    <span>Issued by</span>
+                    <strong>Youooo Python Academy</strong>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="lesson-section">
-            <h3>Example Code</h3>
-            <pre id="lessonCodeBlock" class="code-block"><code># Lesson example will appear here</code></pre>
-          </div>
-
-          <div class="lesson-section">
-            <h3>Quick Quiz</h3>
-            <div id="quizContainer" class="quiz-container"></div>
-          </div>
-        </article>
-
-        <section class="playground-panel panel">
-          <div class="playground-header">
-            <div>
-              <h2>Python Playground</h2>
-              <p class="muted">Write Python and run it in your browser.</p>
-            </div>
-            <div class="playground-actions">
-              <button id="runCodeBtn" class="primary-btn">Run Code</button>
-              <button id="clearCodeBtn" class="ghost-btn">Clear</button>
-              <button id="resetCodeBtn" class="ghost-btn">Reset to Lesson</button>
-            </div>
-          </div>
-
-          <div class="playground-grid">
-            <div>
-              <label class="editor-label" for="codeEditor">Editor</label>
-              <textarea id="codeEditor" spellcheck="false"></textarea>
-            </div>
-            <div>
-              <label class="editor-label" for="outputBox">Output</label>
-              <pre id="outputBox" class="output-box">Python output will appear here...</pre>
-            </div>
-          </div>
-        </section>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>Built for free with GitHub Pages By Ahmed Aldulaimi • Youooo Python Academy</p>
+      <p>Built free with GitHub Pages By Ahmed Aldulaimi • Youooo Python Academy V2</p>
     </footer>
   </div>
 
