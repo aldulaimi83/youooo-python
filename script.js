@@ -427,6 +427,138 @@ print(s.describe())`
   }
 ];
 
+const projects = [
+  {
+    title: "Beginner Project: Tip Calculator",
+    level: "Beginner",
+    duration: "30–45 min",
+    skills: ["variables", "input()", "math", "print()"],
+    description: "Build a simple calculator that takes the bill amount and tip percentage, then prints the total tip and final amount.",
+    steps: [
+      "Ask the user for bill amount",
+      "Ask the user for tip percentage",
+      "Calculate tip amount",
+      "Print final total"
+    ]
+  },
+  {
+    title: "Intermediate Project: Task Manager",
+    level: "Intermediate",
+    duration: "1–2 hours",
+    skills: ["lists", "loops", "functions", "conditions"],
+    description: "Create a small command-line task manager that lets users add, list, and remove tasks.",
+    steps: [
+      "Create a task list",
+      "Add menu options",
+      "Write functions for add/list/remove",
+      "Keep the program running in a loop"
+    ]
+  },
+  {
+    title: "Advanced Project: File Report Generator",
+    level: "Advanced",
+    duration: "2–3 hours",
+    skills: ["files", "loops", "error handling", "strings"],
+    description: "Read a text file and generate a simple report like line count, word count, and character count.",
+    steps: [
+      "Open and read a file",
+      "Count lines and words",
+      "Handle missing file errors",
+      "Print a clean report"
+    ]
+  },
+  {
+    title: "Expert Project: Student Class System",
+    level: "Expert",
+    duration: "2–4 hours",
+    skills: ["classes", "__init__", "methods", "lists of objects"],
+    description: "Build a student management system using classes, where you can create students, store grades, and print summaries.",
+    steps: [
+      "Create Student class",
+      "Store grades in each object",
+      "Add methods for average and summary",
+      "Create multiple student objects"
+    ]
+  },
+  {
+    title: "Portfolio Project: Python Quiz App",
+    level: "Intermediate",
+    duration: "2 hours",
+    skills: ["lists", "dictionaries", "functions", "score tracking"],
+    description: "Build a Python quiz that asks questions, checks answers, and gives a final score.",
+    steps: [
+      "Store questions and answers",
+      "Loop through each question",
+      "Check user answers",
+      "Print final score"
+    ]
+  },
+  {
+    title: "Portfolio Project: Password Generator",
+    level: "Advanced",
+    duration: "1–2 hours",
+    skills: ["random", "strings", "loops", "functions"],
+    description: "Create a random password generator based on length and character options.",
+    steps: [
+      "Import random",
+      "Create character pools",
+      "Ask for desired length",
+      "Generate and print password"
+    ]
+  }
+];
+
+const finalExamQuestions = [
+  {
+    id: 1,
+    question: "Which keyword is used to define a function in Python?",
+    options: ["function", "define", "def", "return"],
+    answer: 2
+  },
+  {
+    id: 2,
+    question: "What data type is this: [1, 2, 3]?",
+    options: ["Tuple", "Dictionary", "List", "String"],
+    answer: 2
+  },
+  {
+    id: 3,
+    question: "Which statement is used for decision-making?",
+    options: ["for", "if", "import", "def"],
+    answer: 1
+  },
+  {
+    id: 4,
+    question: "What does try/except help with?",
+    options: ["Loops", "Styling", "Error handling", "Imports only"],
+    answer: 2
+  },
+  {
+    id: 5,
+    question: "Which keyword loads a module?",
+    options: ["using", "load", "import", "include"],
+    answer: 2
+  },
+  {
+    id: 6,
+    question: "What is __init__ mainly used for?",
+    options: ["Deleting files", "Initializing object data", "Ending a loop", "Creating imports"],
+    answer: 1
+  },
+  {
+    id: 7,
+    question: "Which loop is best for iterating through a known sequence?",
+    options: ["if", "while", "for", "try"],
+    answer: 2
+  },
+  {
+    id: 8,
+    question: "What does print() do?",
+    options: ["Deletes data", "Shows output", "Imports code", "Runs a loop"],
+    answer: 1
+  }
+];
+
 let selectedLessonId = 1;
 let currentFilter = "All";
 let selectedChallengeId = 1;
@@ -455,12 +587,17 @@ const challengeEditor = document.getElementById("challengeEditor");
 const challengeOutput = document.getElementById("challengeOutput");
 
 const roadmapGrid = document.getElementById("roadmapGrid");
+const projectGrid = document.getElementById("projectGrid");
+const examContainer = document.getElementById("examContainer");
+const examResultBox = document.getElementById("examResultBox");
 
 const statLessons = document.getElementById("statLessons");
 const statCompleted = document.getElementById("statCompleted");
 const statChallenges = document.getElementById("statChallenges");
+const statExamScore = document.getElementById("statExamScore");
 const statProgress = document.getElementById("statProgress");
 const runtimeStatus = document.getElementById("runtimeStatus");
+const bestExamScore = document.getElementById("bestExamScore");
 
 const markCompleteBtn = document.getElementById("markCompleteBtn");
 const loadExampleBtn = document.getElementById("loadExampleBtn");
@@ -472,6 +609,8 @@ const themeToggle = document.getElementById("themeToggle");
 const loadChallengeStarterBtn = document.getElementById("loadChallengeStarterBtn");
 const solveChallengeBtn = document.getElementById("solveChallengeBtn");
 const markChallengeSolvedBtn = document.getElementById("markChallengeSolvedBtn");
+const submitExamBtn = document.getElementById("submitExamBtn");
+const resetExamBtn = document.getElementById("resetExamBtn");
 
 const studentNameInput = document.getElementById("studentNameInput");
 const certificateTrackSelect = document.getElementById("certificateTrackSelect");
@@ -481,9 +620,12 @@ const certificateNamePreview = document.getElementById("certificateNamePreview")
 const certificateTrackPreview = document.getElementById("certificateTrackPreview");
 const certificateLessonsPreview = document.getElementById("certificateLessonsPreview");
 const certificateChallengesPreview = document.getElementById("certificateChallengesPreview");
+const certificateExamPreview = document.getElementById("certificateExamPreview");
 const certificateDatePreview = document.getElementById("certificateDatePreview");
 const certificateLessonsDone = document.getElementById("certificateLessonsDone");
 const certificateChallengesDone = document.getElementById("certificateChallengesDone");
+const certificateExamDone = document.getElementById("certificateExamDone");
+const certificateStatusText = document.getElementById("certificateStatusText");
 
 function getLessonProgress() {
   return JSON.parse(localStorage.getItem("youooo-python-progress") || "{}");
@@ -501,6 +643,14 @@ function saveChallengeProgress(progress) {
   localStorage.setItem("youooo-python-challenges", JSON.stringify(progress));
 }
 
+function getExamBestScore() {
+  return Number(localStorage.getItem("youooo-python-exam-best") || 0);
+}
+
+function saveExamBestScore(score) {
+  localStorage.setItem("youooo-python-exam-best", String(score));
+}
+
 function isLessonComplete(id) {
   return !!getLessonProgress()[id];
 }
@@ -515,22 +665,36 @@ function updateStats() {
 
   const completedLessons = Object.keys(lessonProgress).filter((id) => lessonProgress[id]).length;
   const solvedChallenges = Object.keys(challengeProgress).filter((id) => challengeProgress[id]).length;
+  const examScore = getExamBestScore();
 
   const totalLessons = lessons.length;
   const totalChallenges = challenges.length;
-  const overallTotal = totalLessons + totalChallenges;
-  const overallDone = completedLessons + solvedChallenges;
+  const examPortion = examScore >= 70 ? 1 : 0;
+  const overallTotal = totalLessons + totalChallenges + 1;
+  const overallDone = completedLessons + solvedChallenges + examPortion;
   const percent = Math.round((overallDone / overallTotal) * 100);
 
   statLessons.textContent = totalLessons;
   statCompleted.textContent = completedLessons;
   statChallenges.textContent = solvedChallenges;
+  statExamScore.textContent = `${examScore}%`;
   statProgress.textContent = `${percent}%`;
+  bestExamScore.textContent = `${examScore}%`;
 
   certificateLessonsDone.textContent = completedLessons;
   certificateChallengesDone.textContent = solvedChallenges;
+  certificateExamDone.textContent = `${examScore}%`;
+
   certificateLessonsPreview.textContent = completedLessons;
   certificateChallengesPreview.textContent = solvedChallenges;
+  certificateExamPreview.textContent = `${examScore}%`;
+
+  const completedStatus =
+    completedLessons >= Math.ceil(lessons.length * 0.7) &&
+    solvedChallenges >= Math.ceil(challenges.length * 0.5) &&
+    examScore >= 70;
+
+  certificateStatusText.textContent = completedStatus ? "Ready" : "In Progress";
 }
 
 function renderLessons() {
@@ -679,6 +843,79 @@ function renderSelectedChallenge() {
   challengeEditor.value = challenge.starter;
 }
 
+function renderProjects() {
+  projectGrid.innerHTML = "";
+
+  projects.forEach((project) => {
+    const card = document.createElement("div");
+    card.className = "project-card";
+    card.innerHTML = `
+      <h3>${project.title}</h3>
+      <div class="project-meta">
+        <span class="project-tag">${project.level}</span>
+        <span class="project-tag">${project.duration}</span>
+      </div>
+      <p class="muted">${project.description}</p>
+      <div class="project-meta">
+        ${project.skills.map((skill) => `<span class="project-tag">${skill}</span>`).join("")}
+      </div>
+      <h4>Build Steps</h4>
+      <ul class="project-list">
+        ${project.steps.map((step) => `<li>${step}</li>`).join("")}
+      </ul>
+    `;
+    projectGrid.appendChild(card);
+  });
+}
+
+function renderExam() {
+  examContainer.innerHTML = "";
+
+  finalExamQuestions.forEach((q, index) => {
+    const card = document.createElement("div");
+    card.className = "exam-question-card";
+
+    const optionsHtml = q.options
+      .map(
+        (option, optionIndex) => `
+          <label class="exam-option">
+            <input type="radio" name="exam-q-${q.id}" value="${optionIndex}" />
+            ${option}
+          </label>
+        `
+      )
+      .join("");
+
+    card.innerHTML = `
+      <h4>Question ${index + 1}: ${q.question}</h4>
+      <div class="exam-options">${optionsHtml}</div>
+    `;
+
+    examContainer.appendChild(card);
+  });
+}
+
+function calculateExamScore() {
+  let correct = 0;
+
+  finalExamQuestions.forEach((q) => {
+    const selected = document.querySelector(`input[name="exam-q-${q.id}"]:checked`);
+    if (selected && Number(selected.value) === q.answer) {
+      correct += 1;
+    }
+  });
+
+  return Math.round((correct / finalExamQuestions.length) * 100);
+}
+
+function resetExamSelections() {
+  document.querySelectorAll('#examContainer input[type="radio"]').forEach((input) => {
+    input.checked = false;
+  });
+  examResultBox.textContent = "Your exam result will appear here.";
+  examResultBox.className = "exam-result-box muted";
+}
+
 function updateCertificatePreview() {
   const name = studentNameInput.value.trim() || "Your Name Here";
   const track = certificateTrackSelect.value;
@@ -803,14 +1040,18 @@ resetCodeBtn.addEventListener("click", () => {
 });
 
 resetProgressBtn.addEventListener("click", () => {
-  const confirmed = confirm("Reset all lesson and challenge progress?");
+  const confirmed = confirm("Reset all lesson, challenge, and exam progress?");
   if (!confirmed) return;
 
   localStorage.removeItem("youooo-python-progress");
   localStorage.removeItem("youooo-python-challenges");
+  localStorage.removeItem("youooo-python-exam-best");
+
   updateStats();
   renderLessons();
   renderChallenges();
+  resetExamSelections();
+
   outputBox.textContent = "Progress reset.";
   challengeOutput.textContent = "Progress reset.";
   updateCertificatePreview();
@@ -854,11 +1095,43 @@ markChallengeSolvedBtn.addEventListener("click", () => {
   challengeOutput.textContent = "Challenge marked as solved.";
 });
 
+submitExamBtn.addEventListener("click", () => {
+  const score = calculateExamScore();
+  const previousBest = getExamBestScore();
+
+  if (score > previousBest) {
+    saveExamBestScore(score);
+  }
+
+  updateStats();
+  updateCertificatePreview();
+
+  let message = `Your score: ${score}%`;
+  if (score >= 85) {
+    message += " • Excellent work.";
+    examResultBox.className = "exam-result-box";
+  } else if (score >= 70) {
+    message += " • You passed.";
+    examResultBox.className = "exam-result-box";
+  } else {
+    message += " • Keep studying and try again.";
+    examResultBox.className = "exam-result-box";
+  }
+
+  examResultBox.textContent = message;
+});
+
+resetExamBtn.addEventListener("click", () => {
+  resetExamSelections();
+});
+
 generateCertificateBtn.addEventListener("click", () => {
+  updateStats();
   updateCertificatePreview();
 });
 
 printCertificateBtn.addEventListener("click", () => {
+  updateStats();
   updateCertificatePreview();
   window.print();
 });
@@ -875,6 +1148,8 @@ function init() {
   renderRoadmap();
   renderChallenges();
   renderSelectedChallenge();
+  renderProjects();
+  renderExam();
   updateCertificatePreview();
   loadPyRuntime();
 }
