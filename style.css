@@ -42,7 +42,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   background:
     radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 25%),
     radial-gradient(circle at top right, rgba(34, 197, 94, 0.10), transparent 25%),
@@ -118,6 +118,7 @@ body.light .topbar {
 
 .brand h1 {
   margin: 0 0 4px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: 1.4rem;
 }
 
@@ -158,6 +159,7 @@ body.light .topbar {
 
 .hero-card h2 {
   margin: 12px 0 10px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: 2rem;
 }
 
@@ -199,6 +201,7 @@ body.light .topbar {
 
 .track-card h3 {
   margin: 0 0 8px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
 }
 
 .track-card p {
@@ -208,6 +211,56 @@ body.light .topbar {
 
 .active-track {
   background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(34, 197, 94, 0.08));
+}
+
+.hub-overview {
+  margin-bottom: 20px;
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(167, 139, 250, 0.06)),
+    var(--panel);
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.hub-card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hub-step {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.hub-card h3 {
+  margin: 0 0 8px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+}
+
+.hub-card p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hub-link {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.hub-link:hover {
+  color: var(--accent);
 }
 
 .hero-stats {
@@ -404,6 +457,7 @@ body.light .danger-btn {
 .playground-header h2,
 .section-header h2 {
   margin: 10px 0 8px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: 1.8rem;
 }
 
@@ -917,7 +971,8 @@ body.light .danger-btn {
   .project-grid,
   .roadmap-grid,
   .hero-stats,
-  .track-grid {
+  .track-grid,
+  .hub-grid {
     grid-template-columns: 1fr;
   }
 

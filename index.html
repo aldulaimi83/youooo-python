@@ -8,6 +8,9 @@
     name="description"
     content="Youooo Python Academy V3 - Learn Python from beginner to expert with roadmap, challenges, projects, final exam, certificate, and live Python playground."
   />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="youooo_logo.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -34,7 +37,7 @@
         <span class="pill">YouOOO Learning Hub</span>
         <h2>Start in one academy, then branch into Python, Cloud, and Git.</h2>
         <p>
-          `academy.youooo.com` should be the parent learning hub for your technical tracks.
+          `academy.youooo.com` is now the front door for your technical tracks.
           You can study Python here, then jump into the dedicated Cloud and Git academies.
         </p>
 
@@ -85,10 +88,41 @@
       </div>
     </section>
 
+    <section class="hub-overview panel">
+      <div class="section-header">
+        <div>
+          <span class="pill">Learning System</span>
+          <h2>Choose a track, then go deep.</h2>
+          <p class="muted">Use the hub to decide where to start, then move into the specialized academy that matches your goal.</p>
+        </div>
+      </div>
+
+      <div class="hub-grid">
+        <article class="hub-card">
+          <span class="hub-step">01</span>
+          <h3>Start with Python</h3>
+          <p>Build programming confidence, solve structured challenges, and use the in-browser playground.</p>
+          <a href="#academyTab" class="hub-link">Open Python lab</a>
+        </article>
+        <article class="hub-card">
+          <span class="hub-step">02</span>
+          <h3>Move into Cloud</h3>
+          <p>Learn AWS, DevOps, Kubernetes, labs, diagrams, and portfolio-style infrastructure thinking.</p>
+          <a href="https://cloud.youooo.com" target="_blank" rel="noopener" class="hub-link">Go to Cloud track</a>
+        </article>
+        <article class="hub-card">
+          <span class="hub-step">03</span>
+          <h3>Sharpen Git workflow</h3>
+          <p>Practice version control, collaboration, branching, recovery, and deployment workflows.</p>
+          <a href="https://git.youooo.com" target="_blank" rel="noopener" class="hub-link">Go to Git track</a>
+        </article>
+      </div>
+    </section>
+
     <nav class="tabs-panel panel">
       <div class="tabs-row">
-        <button class="tab-btn active" data-tab="academyTab">Academy</button>
-        <button class="tab-btn" data-tab="roadmapTab">Roadmap</button>
+        <button class="tab-btn active" data-tab="academyTab">Python Lab</button>
+        <button class="tab-btn" data-tab="roadmapTab">Python Roadmap</button>
         <button class="tab-btn" data-tab="challengesTab">Challenges</button>
         <button class="tab-btn" data-tab="projectsTab">Projects</button>
         <button class="tab-btn" data-tab="examTab">Final Exam</button>
@@ -101,7 +135,7 @@
         <div class="main-grid">
           <aside class="sidebar panel">
             <div class="sidebar-top">
-              <h3>Curriculum</h3>
+              <h3>Python Curriculum</h3>
               <input
                 id="lessonSearch"
                 type="text"
