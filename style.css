@@ -139,6 +139,17 @@ body.light .topbar {
   flex-wrap: wrap;
 }
 
+.network-link {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.network-link:hover {
+  color: var(--accent);
+}
+
 .hero {
   margin: 22px 0;
 }
@@ -803,6 +814,32 @@ body.light .danger-btn {
   margin-top: 24px;
   color: var(--muted);
   font-size: 0.95rem;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.network-footer-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.network-footer-links a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.network-footer-links a:hover {
+  color: var(--accent);
+}
+
+.network-footer-label {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 @media (max-width: 1280px) {
